@@ -25,7 +25,7 @@ public class SplashActivity extends AppCompatActivity {
 
     private void timerStart() {
         new Handler().postDelayed(() -> {
-            startActivity(new Intent(SplashActivity.this, IntroActivity.class));
+            startActivity(new Intent(SplashActivity.this, IntroAppActivity.class));
             finish();
         }, 3000);
     }
