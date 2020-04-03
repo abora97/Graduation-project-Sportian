@@ -1,4 +1,4 @@
-package com.example.graduationprojectsportian;
+package com.example.graduationprojectsportian.ui;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -9,6 +9,9 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.viewpager.widget.PagerAdapter;
+
+import com.example.graduationprojectsportian.R;
+import com.example.graduationprojectsportian.model.ScreenItem;
 
 import java.util.List;
 

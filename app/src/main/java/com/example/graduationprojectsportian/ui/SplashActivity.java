@@ -1,4 +1,4 @@
-package com.example.graduationprojectsportian;
+package com.example.graduationprojectsportian.ui;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -8,6 +8,8 @@ import android.os.Handler;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
+
+import com.example.graduationprojectsportian.R;
 
 public class SplashActivity extends AppCompatActivity {
 

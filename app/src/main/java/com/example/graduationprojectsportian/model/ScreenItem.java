@@ -1,4 +1,4 @@
-package com.example.graduationprojectsportian;
+package com.example.graduationprojectsportian.model;
 
 public class ScreenItem {
     String Titel, Description;
