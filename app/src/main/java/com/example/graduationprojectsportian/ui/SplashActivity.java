@@ -10,6 +10,7 @@ import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
 
 import com.example.graduationprojectsportian.R;
+import com.example.graduationprojectsportian.ui.intro.IntroAppActivity;
 
 public class SplashActivity extends AppCompatActivity {
 

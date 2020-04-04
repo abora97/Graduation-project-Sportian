@@ -1,4 +1,4 @@
-package com.example.graduationprojectsportian.ui;
+package com.example.graduationprojectsportian.ui.intro;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.viewpager.widget.ViewPager;
@@ -10,19 +10,20 @@ import android.widget.Button;
 
 import com.example.graduationprojectsportian.R;
 import com.example.graduationprojectsportian.model.ScreenItem;
+import com.example.graduationprojectsportian.ui.HomeActivity;
+
 import android.text.Html;
-import android.view.View;
-import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class IntroAppActivity extends AppCompatActivity {
+public class IntroAppActivity extends AppCompatActivity implements View.OnClickListener {
 
 
-    Button btnBack ,btnNext;
+    Button btnBack, btnNext;
 
     private TextView[] mDots;
     LinearLayout linear;
@@ -33,15 +34,16 @@ public class IntroAppActivity extends AppCompatActivity {
     IntroViewPagerAdapter introViewPagerAdapter;
 
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_intro_app);
 
-        btnBack   = findViewById(R.id.btn_back);
+        btnBack = findViewById(R.id.btn_back);
+        btnBack.setOnClickListener(this);
         btnNext = findViewById(R.id.btn_next);
-        linear=findViewById(R.id.linear);
+        btnNext.setOnClickListener(this);
+        linear = findViewById(R.id.linear);
 
         //fill list
         List<ScreenItem> mList = new ArrayList<>();
@@ -65,12 +67,13 @@ public class IntroAppActivity extends AppCompatActivity {
         screenPager.addOnPageChangeListener(viewListener);
 
 
-
     }
 
     private void addDotsIndicator(int position) {
         mDots = new TextView[2];
-        linear.removeAllViews();
+        linear.removeAllViews(
+
+        );
         for (int i = 0; i < mDots.length; i++) {
             mDots[i] = new TextView(this);
             mDots[i].setText(Html.fromHtml("&#8226;"));
@@ -126,4 +129,23 @@ public class IntroAppActivity extends AppCompatActivity {
         }
     };
 
+
+    @Override
+    public void onClick(View v) {
+        switch (v.getId()) {
+            case R.id.btn_next:
+                if (mCurrentPage == 1) {
+                   // Toast.makeText(this, "om kalthom", Toast.LENGTH_SHORT).show();
+                    startActivity(new Intent(IntroAppActivity.this, HomeActivity.class));
+                }
+                screenPager.setCurrentItem(mCurrentPage + 1);
+                break;
+            case R.id.btn_back:
+                screenPager.setCurrentItem(mCurrentPage - 1);
+               // Toast.makeText(this, "bead ank", Toast.LENGTH_SHORT).show();
+                break;
+
+        }
+
+    }
 }

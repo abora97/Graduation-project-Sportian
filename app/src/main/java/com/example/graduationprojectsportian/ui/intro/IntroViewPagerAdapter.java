@@ -1,4 +1,4 @@
-package com.example.graduationprojectsportian.ui;
+package com.example.graduationprojectsportian.ui.intro;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -59,8 +59,6 @@ List<ScreenItem> mListScreem;
     public void destroyItem(@NonNull ViewGroup container, int position, @NonNull Object object) {
         container.removeView((View)object);
 
-
-
-
     }
+
 }
