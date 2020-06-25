@@ -1,4 +1,4 @@
-package com.example.graduationprojectsportian.ui;
+package com.example.graduationprojectsportian.ui.activity;
 
 import androidx.appcompat.app.AppCompatActivity;
 

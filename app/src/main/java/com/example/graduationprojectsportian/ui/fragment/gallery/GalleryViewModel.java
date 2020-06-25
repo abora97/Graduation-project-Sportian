@@ -1,4 +1,4 @@
-package com.example.graduationprojectsportian.ui.ui.gallery;
+package com.example.graduationprojectsportian.ui.fragment.gallery;
 
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;

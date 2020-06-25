@@ -1,4 +1,4 @@
-package com.example.graduationprojectsportian.ui.ui.home;
+package com.example.graduationprojectsportian.ui.fragment.home;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;

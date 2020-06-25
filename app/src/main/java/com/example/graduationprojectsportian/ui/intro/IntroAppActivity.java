@@ -10,7 +10,7 @@ import android.widget.Button;
 
 import com.example.graduationprojectsportian.R;
 import com.example.graduationprojectsportian.model.ScreenItem;
-import com.example.graduationprojectsportian.ui.HomeActivity;
+import com.example.graduationprojectsportian.ui.activity.HomeActivity;
 
 import android.text.Html;
 import android.widget.LinearLayout;
