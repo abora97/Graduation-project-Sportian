@@ -8,12 +8,14 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.drawerlayout.widget.DrawerLayout;
+import androidx.fragment.app.Fragment;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
 
 import com.example.graduationprojectsportian.R;
+import com.example.graduationprojectsportian.ui.fragment.SportFragment;
 import com.google.android.material.navigation.NavigationView;
 
 import butterknife.BindView;
@@ -65,10 +67,19 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
         switch (v.getId()) {
             case R.id.layNews:
                 Toast.makeText(this, "sssssssssssssssss", Toast.LENGTH_SHORT).show();
+
                 break;
             case R.id.laySport:
-                Toast.makeText(this, "aaaaaaaaaaaaaaaaaaaaa", Toast.LENGTH_SHORT).show();
+
+                openFragment(new SportFragment());
                 break;
         }
+    }
+
+    private void openFragment(Fragment fragment) {
+       getSupportFragmentManager().beginTransaction()
+                .replace(R.id.nav_host_fragment, fragment, "findThisFragment")
+                .addToBackStack(null)
+                .commit();
     }
 }
