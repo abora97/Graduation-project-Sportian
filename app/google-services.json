@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "48715237502",
+    "firebase_url": "https://youth-centers.firebaseio.com",
+    "project_id": "youth-centers",
+    "storage_bucket": "youth-centers.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:48715237502:android:12bf75d1a014db9d20f02f",
+        "android_client_info": {
+          "package_name": "com.example.graduationprojectsportian"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "48715237502-41ob5p8a7upc3i5jika7pq8p5aufginp.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.graduationprojectsportian",
+            "certificate_hash": "86f8ff4906ec4942ba4dbfef54842d684925fb79"
+          }
+        },
+        {
+          "client_id": "48715237502-1c7gu1kfkjtk849fh1uttjpgn20jdplt.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAs8Ru_pgSNs__FiEGuJ5ueQWQ_VkbkzL4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "48715237502-1c7gu1kfkjtk849fh1uttjpgn20jdplt.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
