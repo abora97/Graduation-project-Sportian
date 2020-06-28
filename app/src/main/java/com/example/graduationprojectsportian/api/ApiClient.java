@@ -5,7 +5,7 @@ import com.example.graduationprojectsportian.util.Constants;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
-class ApiClient {
+public class ApiClient {
 
     //Retrofit instance
     private static Retrofit retrofit = null;

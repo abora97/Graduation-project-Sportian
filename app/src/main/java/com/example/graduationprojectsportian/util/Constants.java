@@ -6,8 +6,10 @@ public interface Constants {
     String TOP_HEADLINES = "top-headlines";
     String COUNTRY = "country";
     String SOURCES = "sources";
+    String CATEGORY="category";
     String API_KEY = "apiKey";
     String KEY = "72a09f3a08aa416c8f394e4c75ef1435";
 
+    String DETAILS_DATA = "myDetailsData";
 
 }

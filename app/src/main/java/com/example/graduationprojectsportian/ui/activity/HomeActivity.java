@@ -37,7 +37,7 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
         ButterKnife.bind(this);
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-
+        setTitle("News");
         DrawerLayout drawer = findViewById(R.id.drawer_layout);
         NavigationView navigationView = findViewById(R.id.nav_view);
         // Passing each menu ID as a set of Ids because each
@@ -76,7 +76,7 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
     }
 
     private void openFragment(Fragment fragment) {
-       getSupportFragmentManager().beginTransaction()
+        getSupportFragmentManager().beginTransaction()
                 .replace(R.id.nav_host_fragment, fragment, "findThisFragment")
                 .addToBackStack(null)
                 .commit();
