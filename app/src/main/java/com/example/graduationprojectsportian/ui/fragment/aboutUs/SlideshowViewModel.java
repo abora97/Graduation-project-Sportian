@@ -1,4 +1,4 @@
-package com.example.graduationprojectsportian.ui.fragment.slideshow;
+package com.example.graduationprojectsportian.ui.fragment.aboutUs;
 
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;

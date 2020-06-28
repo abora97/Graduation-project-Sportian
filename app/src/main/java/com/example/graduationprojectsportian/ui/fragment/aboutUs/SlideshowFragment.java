@@ -1,4 +1,4 @@
-package com.example.graduationprojectsportian.ui.fragment.gallery;
+package com.example.graduationprojectsportian.ui.fragment.aboutUs;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -14,18 +14,17 @@ import androidx.lifecycle.ViewModelProviders;
 
 import com.example.graduationprojectsportian.R;
 
+public class SlideshowFragment extends Fragment {
 
-public class GalleryFragment extends Fragment {
-
-    private GalleryViewModel galleryViewModel;
+    private SlideshowViewModel slideshowViewModel;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
-        galleryViewModel =
-                ViewModelProviders.of(this).get(GalleryViewModel.class);
-        View root = inflater.inflate(R.layout.fragment_gallery, container, false);
-        final TextView textView = root.findViewById(R.id.text_gallery);
-        galleryViewModel.getText().observe(getViewLifecycleOwner(), new Observer<String>() {
+        slideshowViewModel =
+                ViewModelProviders.of(this).get(SlideshowViewModel.class);
+        View root = inflater.inflate(R.layout.fragment_slideshow, container, false);
+        final TextView textView = root.findViewById(R.id.text_slideshow);
+        slideshowViewModel.getText().observe(getViewLifecycleOwner(), new Observer<String>() {
             @Override
             public void onChanged(@Nullable String s) {
                 textView.setText(s);
