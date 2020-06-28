@@ -7,6 +7,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.Spinner;
 import android.widget.Toast;
@@ -15,12 +16,14 @@ import androidx.fragment.app.Fragment;
 
 import com.example.graduationprojectsportian.R;
 import com.example.graduationprojectsportian.ui.activity.ClubsActivity;
+import com.example.graduationprojectsportian.ui.activity.MapsActivity;
 
 import butterknife.BindView;
 
 public class SportFragment extends Fragment implements AdapterView.OnItemSelectedListener, View.OnClickListener {
 
 
+    ImageButton btnLocation;
     LinearLayout laySearch;
     Spinner spinnerSport;
     Spinner spinnerDistance;
@@ -34,7 +37,16 @@ public class SportFragment extends Fragment implements AdapterView.OnItemSelecte
 
         spinnerSport = RootView.findViewById(R.id.spinnerSport);
         spinnerDistance = RootView.findViewById(R.id.spinnerDistance);
-        laySearch=RootView.findViewById(R.id.laySearch);
+        laySearch = RootView.findViewById(R.id.laySearch);
+        btnLocation= RootView.findViewById(R.id.btnLocation);
+
+        btnLocation.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(getActivity(), MapsActivity.class));;
+            }
+        });
+
 
         init();
         // Inflate the layout for this fragment
@@ -87,4 +99,6 @@ public class SportFragment extends Fragment implements AdapterView.OnItemSelecte
                 break;
         }
     }
+
+
 }
