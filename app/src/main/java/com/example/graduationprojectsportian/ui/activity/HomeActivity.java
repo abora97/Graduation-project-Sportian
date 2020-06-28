@@ -16,6 +16,7 @@ import androidx.navigation.ui.NavigationUI;
 
 import com.example.graduationprojectsportian.R;
 import com.example.graduationprojectsportian.ui.fragment.SportFragment;
+import com.example.graduationprojectsportian.ui.fragment.home.HomeFragment;
 import com.google.android.material.navigation.NavigationView;
 
 import butterknife.BindView;
@@ -66,11 +67,9 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.layNews:
-                Toast.makeText(this, "sssssssssssssssss", Toast.LENGTH_SHORT).show();
-
+                openFragment(new HomeFragment());
                 break;
             case R.id.laySport:
-
                 openFragment(new SportFragment());
                 break;
         }
