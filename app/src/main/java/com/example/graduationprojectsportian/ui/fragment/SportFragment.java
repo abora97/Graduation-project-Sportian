@@ -15,6 +15,7 @@ import androidx.fragment.app.Fragment;
 
 import com.example.graduationprojectsportian.R;
 import com.example.graduationprojectsportian.ui.activity.ClubsActivity;
+import com.example.graduationprojectsportian.ui.activity.MapsActivity;
 
 import butterknife.BindView;
 
@@ -22,8 +23,12 @@ public class SportFragment extends Fragment implements AdapterView.OnItemSelecte
 
 
     LinearLayout laySearch,laySport;
+    ImageButton btnLocation;
+    LinearLayout laySearch;
     Spinner spinnerSport;
+    Spinner spinnerDistance;
     String[] sports;
+    int[] distance;
 
 
     @Override
@@ -31,8 +36,20 @@ public class SportFragment extends Fragment implements AdapterView.OnItemSelecte
         View RootView = inflater.inflate(R.layout.fragment_sport, container, false);
 
         spinnerSport = RootView.findViewById(R.id.spinnerSport);
-        laySearch=RootView.findViewById(R.id.laySearch);
+        spinnerDistance = RootView.findViewById(R.id.spinnerDistance);
+        laySearch = RootView.findViewById(R.id.laySearch);
         laySport=RootView.findViewById(R.id.laySport);
+        btnLocation= RootView.findViewById(R.id.btnLocation);
+
+        btnLocation.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(getActivity(), MapsActivity.class));;
+            }
+        });
+
+
+
 
         init();
         // Inflate the layout for this fragment
@@ -47,15 +64,25 @@ public class SportFragment extends Fragment implements AdapterView.OnItemSelecte
 
     }
 
+
     private void initSpinner() {
+        //spinnerSport
         sports = new String[]{"fitness" , "Weightlifting" , "Gymnastics" , "Judo" ,"Taekwondo"
                 , "Swimming" , "Basketball", "handball", "Volleyball" };
-
         spinnerSport.setOnItemSelectedListener(this);
         ArrayAdapter aa = new ArrayAdapter(getContext(), android.R.layout.simple_spinner_item, sports);
         aa.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         //Setting the ArrayAdapter data on the Spinner
         spinnerSport.setAdapter(aa);
+
+
+        //spinnerDistance
+        distance = new int[]{5,10,25,50};
+        spinnerDistance.setOnItemSelectedListener(this);
+        ArrayAdapter dd = new ArrayAdapter(getContext(), android.R.layout.simple_spinner_item, sports);
+        dd.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        //Setting the ArrayAdapter data on the Spinner
+        spinnerSport.setAdapter(dd);
     }
 
     @Override

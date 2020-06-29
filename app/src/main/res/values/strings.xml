@@ -18,5 +18,12 @@
     <string name="contact">Contact Us</string>
     <string name="about">About Us</string>
     <string name="nav_header_title">Sportian</string>
+    <string name="title_activity_maps">Map</string>
+
+    <!--   Map-->
+    <string name="normal_map">Normal Map</string>
+    <string name="hybrid_map">Hybrid Map</string>
+    <string name="satellite_map">Satellite Map</string>
+    <string name="terrain_map">Terrain Map</string>
 
 </resources>
