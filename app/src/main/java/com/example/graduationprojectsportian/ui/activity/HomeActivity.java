@@ -1,6 +1,7 @@
 package com.example.graduationprojectsportian.ui.activity;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.Toast;
@@ -9,6 +10,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 import androidx.navigation.ui.AppBarConfiguration;
@@ -18,6 +21,8 @@ import com.example.graduationprojectsportian.R;
 import com.example.graduationprojectsportian.ui.fragment.SportFragment;
 import com.example.graduationprojectsportian.ui.fragment.home.HomeFragment;
 import com.google.android.material.navigation.NavigationView;
+
+import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -59,25 +64,26 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
     @Override
     public boolean onSupportNavigateUp() {
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment);
-        return NavigationUI.navigateUp(navController, mAppBarConfiguration)
-                || super.onSupportNavigateUp();
+        return NavigationUI.navigateUp(navController, mAppBarConfiguration) || super.onSupportNavigateUp();
     }
 
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.layNews:
-                openFragment(new HomeFragment());
+                openFragment(new HomeFragment(),"news");
                 break;
             case R.id.laySport:
-                openFragment(new SportFragment());
+                openFragment(new SportFragment(),"sport");
                 break;
         }
     }
 
-    private void openFragment(Fragment fragment) {
+    private void openFragment(Fragment fragment, String tag) {
         getSupportFragmentManager().beginTransaction()
-                .replace(R.id.nav_host_fragment, fragment, "findThisFragment")
+                .remove(fragment)
+                .replace(R.id.nav_host_fragment, fragment, tag)
+            //    .add(R.id.nav_host_fragment,fragment, "findThisFragment")
                 .addToBackStack(null)
                 .commit();
     }

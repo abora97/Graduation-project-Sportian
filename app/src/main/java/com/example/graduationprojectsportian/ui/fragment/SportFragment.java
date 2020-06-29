@@ -21,7 +21,7 @@ import butterknife.BindView;
 public class SportFragment extends Fragment implements AdapterView.OnItemSelectedListener, View.OnClickListener {
 
 
-    LinearLayout laySearch;
+    LinearLayout laySearch,laySport;
     Spinner spinnerSport;
     String[] sports;
 
@@ -32,6 +32,7 @@ public class SportFragment extends Fragment implements AdapterView.OnItemSelecte
 
         spinnerSport = RootView.findViewById(R.id.spinnerSport);
         laySearch=RootView.findViewById(R.id.laySearch);
+        laySport=RootView.findViewById(R.id.laySport);
 
         init();
         // Inflate the layout for this fragment
@@ -41,6 +42,7 @@ public class SportFragment extends Fragment implements AdapterView.OnItemSelecte
     private void init() {
         
         laySearch.setOnClickListener(this);
+        laySport.setOnClickListener(this);
          initSpinner();
 
     }
@@ -71,6 +73,8 @@ public class SportFragment extends Fragment implements AdapterView.OnItemSelecte
         switch (v.getId()){
             case R.id.laySearch:
                 startActivity(new Intent(getActivity(), ClubsActivity.class));
+                break;
+            case R.id.laySport:
                 break;
         }
     }
