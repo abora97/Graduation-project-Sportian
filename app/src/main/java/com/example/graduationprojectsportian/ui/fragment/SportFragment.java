@@ -7,6 +7,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.Spinner;
 import android.widget.Toast;
@@ -24,7 +25,7 @@ public class SportFragment extends Fragment implements AdapterView.OnItemSelecte
 
     LinearLayout laySearch,laySport;
     ImageButton btnLocation;
-    LinearLayout laySearch;
+
     Spinner spinnerSport;
     Spinner spinnerDistance;
     String[] sports;
