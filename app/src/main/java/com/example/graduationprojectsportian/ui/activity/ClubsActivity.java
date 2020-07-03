@@ -22,7 +22,7 @@ public class ClubsActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_clubs);
 
-        mRecyclerView= (RecyclerView) findViewById(R.id.recyclerViewClubs);
+        mRecyclerView=findViewById(R.id.recyclerViewClubs);
         new firebaseDatabaseHelper().readYouthCenters(new firebaseDatabaseHelper.DataStatus() {
             @Override
             public void DataIsLoaded(List<Sport> sports, List<String> Keys) {
