@@ -19,59 +19,133 @@
             android:id="@+id/txtCenter"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            android:layout_marginBottom="1dp"
-            android:text="txtCenter" />
+            android:text="txtCenter"
+            android:textColor="@color/black"
+            android:textSize="16sp" />
 
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginStart="4dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="8dp"
+            android:background="@color/WhiteGray" />
 
         <TextView
             android:id="@+id/txtCaptain"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="1dp"
-            android:text="txtCaptain" />
+            android:layout_marginTop="4dp"
+            android:text="txtCaptain"
+            android:textColor="@color/black"
+            android:textSize="16sp" />
 
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginStart="4dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="8dp"
+            android:background="@color/WhiteGray" />
 
         <TextView
             android:id="@+id/txtGender"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="txtGender" />
+            android:layout_marginTop="4dp"
+            android:text="txtGender"
+            android:textColor="@color/black"
+            android:textSize="16sp" />
 
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginStart="4dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="8dp"
+            android:background="@color/WhiteGray" />
 
         <TextView
             android:id="@+id/txtAge"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="txtAge" />
+            android:layout_marginTop="4dp"
+            android:text="txtAge"
+            android:textColor="@color/black"
+            android:textSize="16sp" />
 
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginStart="4dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="8dp"
+            android:background="@color/WhiteGray" />
 
-        <TextView
-            android:id="@+id/txtDay"
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="txtDay" />
+            android:layout_gravity="center"
+            android:orientation="horizontal">
 
+            <TextView
+                android:id="@+id/txtDay"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="txtDay"
+                android:padding="2dp"
+                android:textColor="@color/black"
+                android:textSize="16sp" />
+            <View
+                android:layout_width="1dp"
+                android:layout_height="match_parent"
+                android:layout_marginEnd="8dp"
+                android:layout_marginStart="4dp"
+                android:background="@color/WhiteGray"/>
+            <TextView
+                android:id="@+id/txtTime"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="txtTime"
+                android:padding="2dp"
+                android:textColor="@color/black"
+                android:textSize="16sp" />
+        </LinearLayout>
 
-        <TextView
-            android:id="@+id/txtTime"
+        <View
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="txtTime" />
-
+            android:layout_height="1dp"
+            android:layout_marginStart="4dp"
+            android:layout_marginEnd="8dp"
+            android:background="@color/WhiteGray" />
 
         <TextView
             android:id="@+id/txtCost"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="txtCost" />
+            android:layout_marginTop="4dp"
+            android:text="txtCost"
+            android:textColor="@color/black"
+            android:textSize="16sp" />
 
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginStart="4dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="8dp"
+            android:background="@color/WhiteGray" />
 
         <TextView
             android:id="@+id/txtPhone"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="txtPhone" />
+            android:layout_marginTop="4dp"
+            android:text="txtPhone"
+            android:textColor="@color/black"
+            android:textSize="16sp" />
 
     </LinearLayout>
 
