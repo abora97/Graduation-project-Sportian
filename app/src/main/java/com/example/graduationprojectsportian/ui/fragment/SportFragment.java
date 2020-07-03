@@ -65,7 +65,7 @@ public class SportFragment extends Fragment implements AdapterView.OnItemSelecte
 
     private void initSpinner() {
         //spinnerSport
-        sports = new String[]{"fitness" , "Weightlifting" , "Gymnastics" , "Judo" ,"Taekwondo"
+        sports = new String[]{"Aerobics" , "Weightlifting" , "Gymnastics" , "Judo" ,"Taekwondo"
                 , "Swimming" , "Basketball", "handball", "Volleyball" };
         spinnerSport.setOnItemSelectedListener(this);
         ArrayAdapter aa = new ArrayAdapter(getContext(), android.R.layout.simple_spinner_item, sports);
