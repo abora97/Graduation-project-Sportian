@@ -23,11 +23,8 @@ import butterknife.BindView;
 public class SportFragment extends Fragment implements AdapterView.OnItemSelectedListener, View.OnClickListener {
 
 
-    LinearLayout laySearch,laySport;
-    ImageButton btnLocation;
-
-    Spinner spinnerSport;
-    Spinner spinnerDistance;
+    LinearLayout laySearch,laySport,layLocation;
+    Spinner spinnerSport, spinnerDistance;
     String[] sports;
     int[] distance;
 
@@ -40,9 +37,9 @@ public class SportFragment extends Fragment implements AdapterView.OnItemSelecte
         spinnerDistance = RootView.findViewById(R.id.spinnerDistance);
         laySearch = RootView.findViewById(R.id.laySearch);
         laySport=RootView.findViewById(R.id.laySport);
-        btnLocation= RootView.findViewById(R.id.btnLocation);
+        layLocation=RootView.findViewById(R.id.layLocation);
 
-        btnLocation.setOnClickListener(new View.OnClickListener() {
+        layLocation.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(getActivity(), MapsActivity.class));;
