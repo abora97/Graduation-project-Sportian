@@ -1,4 +1,4 @@
-package com.example.graduationprojectsportian.ui.fragment.contactUs;
+package com.example.graduationprojectsportian.ui.fragment.ContactUs;
 
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
@@ -10,9 +10,9 @@ public class GalleryViewModel extends ViewModel {
 
     public GalleryViewModel() {
         mText = new MutableLiveData<>();
-        mText.setValue("" +
-                "Email :SportianHTI@gmail.com \n"  +
-                "Phone Number : 01229216231");
+//        mText.setValue("" +
+//                "Email :SportianHTI@gmail.com \n"  +
+//                "Phone Number : 01229216231");
     }
 
     public LiveData<String> getText() {
