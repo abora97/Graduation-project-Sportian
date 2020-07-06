@@ -13,10 +13,9 @@ import android.os.Handler;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
-import android.widget.Toast;
 
 import com.example.graduationprojectsportian.R;
-import com.example.graduationprojectsportian.ui.intro.IntroAppActivity;
+import com.example.graduationprojectsportian.ui.activity.intro.IntroAppActivity;
 
 public class SplashActivity extends AppCompatActivity {
     private static final int MAKE_CALL_PERMISSION_REQUEST_CODE = 1;

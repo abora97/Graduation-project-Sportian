@@ -44,7 +44,7 @@
             android:label="@string/title_activity_home"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".ui.intro.IntroAppActivity"
+            android:name=".ui.activity.intro.IntroAppActivity"
             android:theme="@style/Theme.AppCompat.NoActionBar" />
         <activity
             android:name=".ui.activity.SplashActivity"

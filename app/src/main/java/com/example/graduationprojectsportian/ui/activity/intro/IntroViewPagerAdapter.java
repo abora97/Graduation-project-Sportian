@@ -1,4 +1,4 @@
-package com.example.graduationprojectsportian.ui.intro;
+package com.example.graduationprojectsportian.ui.activity.intro;
 
 import android.content.Context;
 import android.view.LayoutInflater;
