@@ -4,29 +4,46 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
+import android.widget.Toast;
 
 import com.example.graduationprojectsportian.R;
 import com.example.graduationprojectsportian.model.RecyclerView_Config;
 import com.example.graduationprojectsportian.model.Sport;
 import com.example.graduationprojectsportian.model.firebaseDatabaseHelper;
+import com.example.graduationprojectsportian.util.Constants;
 
+import java.util.ArrayList;
 import java.util.List;
 
 
 public class ClubsActivity extends AppCompatActivity {
 
-    private RecyclerView mRecyclerView;
+    private RecyclerView recyclerView;
+    int searchDistance = 3, arrSize;
+    List<Sport> sportList;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_clubs);
 
-        mRecyclerView=findViewById(R.id.recyclerViewClubs);
+        recyclerView = findViewById(R.id.recyclerViewClubs);
+        sportList = new ArrayList<Sport>();
+        Bundle bundle = getIntent().getExtras();
+        if (bundle != null) {
+            searchDistance = bundle.getInt("distance");
+            initFireBase();
+        }
+    }
+
+
+    private void initFireBase() {
         new firebaseDatabaseHelper().readYouthCenters(new firebaseDatabaseHelper.DataStatus() {
             @Override
             public void DataIsLoaded(List<Sport> sports, List<String> Keys) {
-                new RecyclerView_Config().setConfig(mRecyclerView,ClubsActivity.this, sports, Keys);
+
+                initRec(sports, Keys);
+
             }
 
             @Override
@@ -45,4 +62,19 @@ public class ClubsActivity extends AppCompatActivity {
             }
         });
     }
+
+    private void initRec(List<Sport> sports, List<String> keys) {
+        if (searchDistance > sports.size()) {
+            arrSize = sports.size();
+        } else {
+            arrSize = searchDistance;
+        }
+
+        for (int i = 0; i < arrSize; i++) {
+            sportList.add(sports.get(i));
+        }
+
+        new RecyclerView_Config().setConfig(recyclerView, ClubsActivity.this, sportList, keys);
+    }
+
 }

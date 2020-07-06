@@ -20,14 +20,14 @@ import com.example.graduationprojectsportian.ui.activity.MapsActivity;
 
 import butterknife.BindView;
 
-public class SportFragment extends Fragment implements AdapterView.OnItemSelectedListener, View.OnClickListener {
+public class SportFragment extends Fragment implements View.OnClickListener, AdapterView.OnItemSelectedListener {
 
 
-    LinearLayout laySearch,laySport,layLocation;
+    LinearLayout laySearch, laySport, layLocation;
     Spinner spinnerSport, spinnerDistance;
     String[] sports;
-    int[] distance;
-
+    String[] distance;
+    int searchDistance = 5;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -36,17 +36,16 @@ public class SportFragment extends Fragment implements AdapterView.OnItemSelecte
         spinnerSport = RootView.findViewById(R.id.spinnerSport);
         spinnerDistance = RootView.findViewById(R.id.spinnerDistance);
         laySearch = RootView.findViewById(R.id.laySearch);
-        laySport=RootView.findViewById(R.id.laySport);
-        layLocation=RootView.findViewById(R.id.layLocation);
+        laySport = RootView.findViewById(R.id.laySport);
+        layLocation = RootView.findViewById(R.id.layLocation);
 
         layLocation.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(getActivity(), MapsActivity.class));;
+                startActivity(new Intent(getActivity(), MapsActivity.class));
+                ;
             }
         });
-
-
 
 
         init();
@@ -55,19 +54,19 @@ public class SportFragment extends Fragment implements AdapterView.OnItemSelecte
     }
 
     private void init() {
-        
+
         laySearch.setOnClickListener(this);
         laySport.setOnClickListener(this);
-         initSpinner();
+        initSpinner();
 
     }
 
 
     private void initSpinner() {
         //spinnerSport
-        sports = new String[]{"Aerobics" , "Weightlifting" , "Gymnastics" , "Judo" ,"Taekwondo"
-                , "Swimming" , "Basketball", "handball", "Volleyball" };
-        spinnerSport.setOnItemSelectedListener(this);
+        sports = new String[]{"Aerobics", "Weightlifting", "Gymnastics", "Judo", "Taekwondo"
+                , "Swimming", "Basketball", "handball", "Volleyball"};
+
         ArrayAdapter aa = new ArrayAdapter(getContext(), android.R.layout.simple_spinner_item, sports);
         aa.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         //Setting the ArrayAdapter data on the Spinner
@@ -75,32 +74,49 @@ public class SportFragment extends Fragment implements AdapterView.OnItemSelecte
 
 
         //spinnerDistance
-        distance = new int[]{5,10,25,50};
-        spinnerDistance.setOnItemSelectedListener(this);
-        ArrayAdapter dd = new ArrayAdapter(getContext(), android.R.layout.simple_spinner_item, sports);
+        distance = new String[]{"5", "10", "25", "50"};
+        ArrayAdapter dd = new ArrayAdapter(getContext(), android.R.layout.simple_spinner_item, distance);
         dd.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         //Setting the ArrayAdapter data on the Spinner
-        spinnerSport.setAdapter(dd);
+        spinnerDistance.setAdapter(dd);
+        spinnerDistance.setOnItemSelectedListener(this);
+    }
+
+    @Override
+    public void onClick(View v) {
+        switch (v.getId()) {
+            case R.id.laySearch:
+                Intent intent = new Intent(getActivity(), ClubsActivity.class);
+                Bundle bundle = new Bundle();
+                bundle.putInt("distance", searchDistance);
+                intent.putExtras(bundle);
+                startActivity(intent);
+                break;
+            case R.id.laySport:
+                break;
+        }
     }
 
     @Override
     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-      //  Toast.makeText(getContext(), sports[position], Toast.LENGTH_LONG).show();
+        switch (position) {
+            case 0:
+                searchDistance =3;
+                break;
+            case 1:
+                searchDistance = 5;
+                break;
+            case 2:
+                searchDistance = 7;
+                break;
+            case 3:
+                searchDistance = 15;
+                break;
+        }
     }
 
     @Override
     public void onNothingSelected(AdapterView<?> parent) {
 
-    }
-
-    @Override
-    public void onClick(View v) {
-        switch (v.getId()){
-            case R.id.laySearch:
-                startActivity(new Intent(getActivity(), ClubsActivity.class));
-                break;
-            case R.id.laySport:
-                break;
-        }
     }
 }
