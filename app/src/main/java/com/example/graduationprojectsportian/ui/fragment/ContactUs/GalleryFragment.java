@@ -1,4 +1,4 @@
-package com.example.graduationprojectsportian.ui.fragment.contactUs;
+package com.example.graduationprojectsportian.ui.fragment.ContactUs;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;

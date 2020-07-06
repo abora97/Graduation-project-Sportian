@@ -46,13 +46,9 @@ public class IntroAppActivity extends AppCompatActivity implements View.OnClickL
 
         //fill list
         List<ScreenItem> mList = new ArrayList<>();
-        mList.add(new ScreenItem("  unpopular sports", "         In this application \n" +
-                "youth can read the latest news\n" +
-                "    about un popular sports  \n ", R.drawable.screen_start));
-        mList.add(new ScreenItem("hello", "     help youth to find the nearest place\n" +
-                "   they want to play their sports through \n" +
-                "     the youth sports clubs which follow \n" +
-                "       the ministry of youth and sports \n", R.drawable.screen_sec));
+        mList.add(new ScreenItem("Welcome", "  We are present in most of Egypt's youth centers in order to help you find the most suitable place to practice sports and the best cost ", R.drawable.firstintro));
+        mList.add(new ScreenItem("Let's find out for yourself", " The application contains many services such as finding the nearest youth center" +
+                " and news.", R.drawable.secondintro));
 
 
         //setup viewPager

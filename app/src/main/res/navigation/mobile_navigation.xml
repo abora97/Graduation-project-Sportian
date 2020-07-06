@@ -13,7 +13,7 @@
 
     <fragment
         android:id="@+id/nav_gallery"
-        android:name="com.example.graduationprojectsportian.ui.fragment.contactUs.GalleryFragment"
+        android:name="com.example.graduationprojectsportian.ui.fragment.ContactUs.GalleryFragment"
         android:label="@string/contact"
         tools:layout="@layout/fragment_gallery" />
 
