@@ -9,6 +9,7 @@
 
     <LinearLayout
         android:id="@+id/lay_news"
+        android:background="@color/GifBackGround"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical">
@@ -17,13 +18,14 @@
             android:id="@+id/ivSport"
             android:layout_width="match_parent"
             android:layout_height="160dp"
-            android:src="@drawable/ic_sport" />
+            android:src="@drawable/abdominal_crunch" />
 
         <TextView
             android:id="@+id/tvName"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center"
+            android:background="@color/white"
             android:text="Sport Name"
             android:textColor="@color/black"
             android:textSize="18sp" />

@@ -59,12 +59,18 @@ public class ExerciseFragment extends Fragment implements View.OnClickListener {
 
     void getData() {
         exerciseList = new ArrayList<>();
-        exerciseList.add(new ExerciseList(R.drawable.exxx, "ss"));
-        exerciseList.add(new ExerciseList(R.drawable.ic_sport, "qq"));
-        exerciseList.add(new ExerciseList(R.drawable.ic_sport, "we"));
-        exerciseList.add(new ExerciseList(R.drawable.exxx, "qwq"));
-//       exerciseList.add(new ExerciseList("ss","sqwqs"));
-//       exerciseList.add(new ExerciseList("ss","sqws"));
+        exerciseList.add(new ExerciseList(R.drawable.jumping_jacks, "Ex1  Jumping Jacks"));
+        exerciseList.add(new ExerciseList(R.drawable.wall_site, "Ex2  Wall Site"));
+        exerciseList.add(new ExerciseList(R.drawable.push_up, "Ex3  Push Up"));
+        exerciseList.add(new ExerciseList(R.drawable.abdominal_crunch, "Ex4 Abdominal Crunch"));
+        exerciseList.add(new ExerciseList(R.drawable.step_up_into_chair, "Ex5 Step Up into Chair"));
+        exerciseList.add(new ExerciseList(R.drawable.squat, "Ex6 Squat.gif"));
+        exerciseList.add(new ExerciseList(R.drawable.triceps_dip_on_chair, "Ex7 Triceps Dip on Chair"));
+        exerciseList.add(new ExerciseList(R.drawable.plank , "EX8 Plank "));
+        exerciseList.add(new ExerciseList(R.drawable.high_knees_running_in_place, "Ex9 high Knees  Running In place"));
+        exerciseList.add(new ExerciseList(R.drawable.lunge, "Ex10 Lunge"));
+        exerciseList.add(new ExerciseList(R.drawable.push_up_and_rotation, "Ex11 Push Up and Rotation"));
+        exerciseList.add(new ExerciseList(R.drawable.side_plank, "Ex12 Side Plank"));
     }
 
     @Override
