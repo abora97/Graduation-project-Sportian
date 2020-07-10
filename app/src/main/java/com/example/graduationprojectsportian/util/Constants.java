@@ -12,4 +12,6 @@ public interface Constants {
 
     String DETAILS_DATA = "myDetailsData";
 
+    String MyPREFERENCES = "MyPrefs" ;
+    String INTROSTATUS = "MyPrefs" ;
 }
