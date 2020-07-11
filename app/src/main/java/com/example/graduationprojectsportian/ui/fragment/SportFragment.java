@@ -15,6 +15,7 @@ import android.widget.Toast;
 import androidx.fragment.app.Fragment;
 
 import com.example.graduationprojectsportian.R;
+import com.example.graduationprojectsportian.model.User;
 import com.example.graduationprojectsportian.ui.activity.ClubsActivity;
 import com.example.graduationprojectsportian.ui.activity.MapsActivity;
 
@@ -28,10 +29,13 @@ public class SportFragment extends Fragment implements View.OnClickListener, Ada
     String[] sports;
     String[] distance;
     int searchDistance = 5;
+    String sportItem,distanceItem;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View RootView = inflater.inflate(R.layout.fragment_sport, container, false);
+
+
 
         spinnerSport = RootView.findViewById(R.id.spinnerSport);
         spinnerDistance = RootView.findViewById(R.id.spinnerDistance);
@@ -53,6 +57,9 @@ public class SportFragment extends Fragment implements View.OnClickListener, Ada
         return RootView;
     }
 
+    User user = new User();
+
+
     private void init() {
 
         laySearch.setOnClickListener(this);
@@ -67,18 +74,19 @@ public class SportFragment extends Fragment implements View.OnClickListener, Ada
         sports = new String[]{"Aerobics", "Weightlifting", "Gymnastics", "Judo", "Taekwondo"
                 , "Swimming", "Basketball", "handball", "Volleyball"};
 
-        ArrayAdapter aa = new ArrayAdapter(getContext(), android.R.layout.simple_spinner_item, sports);
-        aa.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        ArrayAdapter arrSports = new ArrayAdapter(getContext(), android.R.layout.simple_spinner_item, sports);
+        arrSports.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         //Setting the ArrayAdapter data on the Spinner
-        spinnerSport.setAdapter(aa);
+        spinnerSport.setAdapter(arrSports);
+        spinnerSport.setOnItemSelectedListener(this);
 
 
         //spinnerDistance
-        distance = new String[]{"5", "10", "25", "50"};
-        ArrayAdapter dd = new ArrayAdapter(getContext(), android.R.layout.simple_spinner_item, distance);
-        dd.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        distance = new String[]{"5", "10", "25", "50", "100"};
+        ArrayAdapter arrdistance = new ArrayAdapter(getContext(), android.R.layout.simple_spinner_item, distance);
+        arrdistance.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         //Setting the ArrayAdapter data on the Spinner
-        spinnerDistance.setAdapter(dd);
+        spinnerDistance.setAdapter(arrdistance);
         spinnerDistance.setOnItemSelectedListener(this);
     }
 
@@ -99,20 +107,30 @@ public class SportFragment extends Fragment implements View.OnClickListener, Ada
 
     @Override
     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-        switch (position) {
-            case 0:
-                searchDistance =3;
-                break;
-            case 1:
-                searchDistance = 5;
-                break;
-            case 2:
-                searchDistance = 7;
-                break;
-            case 3:
-                searchDistance = 15;
-                break;
+        if (parent.getId() == R.id.spinnerSport){
+             sportItem = spinnerSport.getItemAtPosition(position).toString();
+           // Toast.makeText(spinnerDistance.getContext(), "Selected  : " + sports, Toast.LENGTH_LONG).show();
         }
+        else if (parent.getId() == R.id.spinnerDistance) {
+             distanceItem = spinnerDistance.getItemAtPosition(position).toString();
+            //Toast.makeText(spinnerDistance.getContext(), "Selected distance : " + distance + " Km", Toast.LENGTH_LONG).show();
+        }
+        //user.setSport(String.valueOf(sports.getSelectedItem()));
+
+//        switch (position) {
+//            case 0:
+//                searchDistance =3;
+//                break;
+//            case 1:
+//                searchDistance = 5;
+//                break;
+//            case 2:
+//                searchDistance = 7;
+//                break;
+//            case 3:
+//                searchDistance = 15;
+//                break;
+//        }
     }
 
     @Override

@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_margin="10dp"
-    android:background="@color/white"
+    android:background="@android:color/background_light"
     app:cardCornerRadius="10dp">
 
     <LinearLayout
@@ -28,6 +28,7 @@
             android:background="@color/white"
             android:text="Sport Name"
             android:textColor="@color/black"
-            android:textSize="18sp" />
+            android:textSize="15sp"
+            android:layout_margin="1dp"/>
     </LinearLayout>
 </androidx.cardview.widget.CardView>

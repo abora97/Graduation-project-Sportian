@@ -1,5 +1,6 @@
 package com.example.graduationprojectsportian.ui.activity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.MenuItem;
@@ -8,6 +9,7 @@ import android.widget.LinearLayout;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.core.view.GravityCompat;
@@ -64,8 +66,9 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
 
         navigationView.setNavigationItemSelectedListener(this);
 
-        layNews.setOnClickListener(this);
         laySport.setOnClickListener(this);
+        layNews.setOnClickListener(this);
+
     }
 
 
@@ -101,14 +104,24 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
-            case R.id.layNews:
-                openFragment(new HomeFragment(),"news");
-                break;
             case R.id.laySport:
                 openFragment(new SportFragment(),"sport");
                 break;
+            case R.id.layNews:
+                openFragment(new HomeFragment(),"news");
+                break;
         }
+
     }
+
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        Fragment fragment = getSupportFragmentManager().findFragmentById(R.id.laySport);
+        super.onActivityResult(requestCode, resultCode, data);
+        finish();
+    }
+
 
     private void openFragment(Fragment fragment, String tag) {
         getSupportFragmentManager().beginTransaction()

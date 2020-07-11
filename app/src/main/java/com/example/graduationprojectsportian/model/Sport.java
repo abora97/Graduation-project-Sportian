@@ -13,6 +13,11 @@ public class Sport {
     public double latitude;
     public double longitude;
 
+//    public double userlatitude;
+//    public double userlongitude;
+
+
+
     public Sport() {
     }
 

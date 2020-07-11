@@ -59,19 +59,20 @@ public class ExerciseFragment extends Fragment implements View.OnClickListener {
 
     void getData() {
         exerciseList = new ArrayList<>();
-        exerciseList.add(new ExerciseList(R.drawable.jumping_jacks, "Ex1  Jumping Jacks"));
-        exerciseList.add(new ExerciseList(R.drawable.wall_site, "Ex2  Wall Site"));
-        exerciseList.add(new ExerciseList(R.drawable.push_up, "Ex3  Push Up"));
-        exerciseList.add(new ExerciseList(R.drawable.abdominal_crunch, "Ex4 Abdominal Crunch"));
-        exerciseList.add(new ExerciseList(R.drawable.step_up_into_chair, "Ex5 Step Up into Chair"));
-        exerciseList.add(new ExerciseList(R.drawable.squat, "Ex6 Squat.gif"));
-        exerciseList.add(new ExerciseList(R.drawable.triceps_dip_on_chair, "Ex7 Triceps Dip on Chair"));
-        exerciseList.add(new ExerciseList(R.drawable.plank , "EX8 Plank "));
-        exerciseList.add(new ExerciseList(R.drawable.high_knees_running_in_place, "Ex9 high Knees  Running In place"));
-        exerciseList.add(new ExerciseList(R.drawable.lunge, "Ex10 Lunge"));
-        exerciseList.add(new ExerciseList(R.drawable.push_up_and_rotation, "Ex11 Push Up and Rotation"));
-        exerciseList.add(new ExerciseList(R.drawable.side_plank, "Ex12 Side Plank"));
+        exerciseList.add(new ExerciseList(R.drawable.jumping_jacks, "Exercise 1\nJumping Jacks"));
+        exerciseList.add(new ExerciseList(R.drawable.wall_site, "Exercise 2\nWall Site"));
+        exerciseList.add(new ExerciseList(R.drawable.push_up, "Exercise 3\nPush Up"));
+        exerciseList.add(new ExerciseList(R.drawable.abdominal_crunch, "Exercise 4\nAbdominal Crunch"));
+        exerciseList.add(new ExerciseList(R.drawable.step_up_into_chair, "Exercise 5\nStep Up into Chair"));
+        exerciseList.add(new ExerciseList(R.drawable.squat, "Exercise 6\n Squat"));
+        exerciseList.add(new ExerciseList(R.drawable.triceps_dip_on_chair, "Exercise 7\nTriceps Dip on Chair"));
+        exerciseList.add(new ExerciseList(R.drawable.plank , "Exercise 8\nPlank "));
+        exerciseList.add(new ExerciseList(R.drawable.high_knees_running_in_place, "Exercise 9\nhigh Knees Running\nIn place"));
+        exerciseList.add(new ExerciseList(R.drawable.lunge, "Exercise10\n Lunge"));
+        exerciseList.add(new ExerciseList(R.drawable.push_up_and_rotation, "Exercise 11\nPush Up and Rotation"));
+        exerciseList.add(new ExerciseList(R.drawable.side_plank, "Exercise 12\nSide Plank"));
     }
+
 
     @Override
     public void onClick(View v) {

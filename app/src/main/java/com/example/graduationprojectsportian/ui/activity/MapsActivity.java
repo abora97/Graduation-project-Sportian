@@ -6,7 +6,9 @@ import androidx.appcompat.widget.SearchView;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 import androidx.fragment.app.FragmentActivity;
+import androidx.fragment.app.FragmentManager;
 
+import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.location.Address;
 import android.location.Geocoder;
@@ -20,6 +22,9 @@ import android.widget.Button;
 import android.widget.Toast;
 
 import com.example.graduationprojectsportian.R;
+import com.example.graduationprojectsportian.model.Sport;
+import com.example.graduationprojectsportian.model.User;
+import com.example.graduationprojectsportian.ui.fragment.SportFragment;
 import com.google.android.gms.location.FusedLocationProviderClient;
 import com.google.android.gms.location.LocationServices;
 import com.google.android.gms.maps.CameraUpdateFactory;
@@ -41,9 +46,10 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     Location CurrentLocation;
     FusedLocationProviderClient fusedLocationProviderClient;
     private static final int REQEST_CODE =101;
-    double Curlongitude;
-    double Curlatitude;
+    double UserLatitude;
+    double UserLongitude;
     LatLng position;
+    Button done;
 
 
     @Override
@@ -53,10 +59,23 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         fusedLocationProviderClient = LocationServices.getFusedLocationProviderClient(this);
         fetchLastLocation();
 
+        User user = new User();
+
         MapFragment mapFragment = (MapFragment)getFragmentManager()
                 .findFragmentById(R.id.map);
         mapFragment.getMapAsync(MapsActivity.this);
 
+
+        done = findViewById(R.id.donebtn);
+        done.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MapsActivity.this, HomeActivity.class);
+                user.setUserlatitude(UserLatitude);
+                user.setUserlongitude(UserLongitude);
+                finish();
+            }
+        });
     }
 
 
@@ -64,7 +83,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     @Override
     public void onMapReady(GoogleMap googleMap) {
         mMap = googleMap;
-        LatLng latLng = new LatLng(Curlatitude, Curlongitude);
+        LatLng latLng = new LatLng(UserLatitude, UserLongitude);
         // View current location position and move the camera
         mMap.animateCamera(CameraUpdateFactory.newLatLng(latLng));
         mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(latLng, 14f));
@@ -165,9 +184,9 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
             public void onSuccess(Location location) {
                 if(location != null) {
                     CurrentLocation = location;
-                    Curlatitude = CurrentLocation.getLatitude();
-                    Curlongitude = CurrentLocation.getLongitude();
-                    Toast.makeText(getApplicationContext(),Curlatitude+" " +Curlongitude,Toast.LENGTH_LONG).show();
+                    UserLatitude = CurrentLocation.getLatitude();
+                    UserLongitude = CurrentLocation.getLongitude();
+                    Toast.makeText(getApplicationContext(),UserLatitude+" " +UserLongitude,Toast.LENGTH_LONG).show();
 
                     // Obtain the SupportMapFragment and get notified when the map is ready to be used.
                     MapFragment mapFragment = (MapFragment)getFragmentManager()
@@ -193,12 +212,15 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
     // Show current location
     public void oncurrent(View view) {
-        LatLng latLng = new LatLng(Curlatitude, Curlongitude);
+        LatLng latLng = new LatLng(UserLatitude, UserLongitude);
         MarkerOptions markerOptions = new MarkerOptions().position(latLng).title("You are Here !");
         mMap.animateCamera(CameraUpdateFactory.newLatLng(latLng));
         mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(latLng, 18f));
+        mMap.clear();
         mMap.addMarker(markerOptions);
         Toast.makeText(getApplicationContext(),"Location "+latLng,Toast.LENGTH_LONG).show();
     }
 }
+
+
 
