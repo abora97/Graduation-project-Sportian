@@ -3,7 +3,9 @@ package com.example.graduationprojectsportian.ui.activity.intro;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.viewpager.widget.ViewPager;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -11,8 +13,10 @@ import android.widget.Button;
 import com.example.graduationprojectsportian.R;
 import com.example.graduationprojectsportian.model.ScreenItem;
 import com.example.graduationprojectsportian.ui.activity.HomeActivity;
+import com.example.graduationprojectsportian.util.Constants;
 
 import android.text.Html;
+import android.widget.CheckBox;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
@@ -23,6 +27,7 @@ public class IntroAppActivity extends AppCompatActivity implements View.OnClickL
 
 
     Button btnBack, btnNext;
+    CheckBox checkboxIntro;
 
     private TextView[] mDots;
     LinearLayout linear;
@@ -43,6 +48,7 @@ public class IntroAppActivity extends AppCompatActivity implements View.OnClickL
         btnNext = findViewById(R.id.btn_next);
         btnNext.setOnClickListener(this);
         linear = findViewById(R.id.linear);
+        checkboxIntro = findViewById(R.id.checkboxIntro);
 
         //fill list
         List<ScreenItem> mList = new ArrayList<>();
@@ -130,14 +136,18 @@ public class IntroAppActivity extends AppCompatActivity implements View.OnClickL
         switch (v.getId()) {
             case R.id.btn_next:
                 if (mCurrentPage == 1) {
-                   // Toast.makeText(this, "om kalthom", Toast.LENGTH_SHORT).show();
+                    SharedPreferences sharedpreferences = getSharedPreferences(Constants.MyPREFERENCES, Context.MODE_PRIVATE);
+                    SharedPreferences.Editor editor = sharedpreferences.edit();
+                    editor.putBoolean(Constants.INTROSTATUS,   checkboxIntro.isChecked());
+                    editor.commit();
                     startActivity(new Intent(IntroAppActivity.this, HomeActivity.class));
+                    finish();
                 }
                 screenPager.setCurrentItem(mCurrentPage + 1);
                 break;
             case R.id.btn_back:
                 screenPager.setCurrentItem(mCurrentPage - 1);
-               // Toast.makeText(this, "bead ank", Toast.LENGTH_SHORT).show();
+                // Toast.makeText(this, "bead ank", Toast.LENGTH_SHORT).show();
                 break;
 
         }
