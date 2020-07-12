@@ -83,7 +83,7 @@ public class SportFragment extends Fragment implements View.OnClickListener, Ada
 
 
         //spinnerDistance
-        distance = new String[]{"5", "10", "25", "50", "100"};
+        distance = new String[]{"5", "10", "25", "50", "100","200"};
         ArrayAdapter arrdistance = new ArrayAdapter(getContext(), android.R.layout.simple_spinner_item, distance);
         arrdistance.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         //Setting the ArrayAdapter data on the Spinner
@@ -125,19 +125,22 @@ public class SportFragment extends Fragment implements View.OnClickListener, Ada
 
         switch (position) {
             case 0:
-                searchDistance = 5;
+                searchDistance = 5000;
                 break;
             case 1:
-                searchDistance = 10;
+                searchDistance = 10000;
                 break;
             case 2:
-                searchDistance = 25;
+                searchDistance = 25000;
                 break;
             case 3:
-                searchDistance = 50;
+                searchDistance = 50000;
                 break;
             case 4:
-                searchDistance = 100;
+                searchDistance = 100000;
+                break;
+            case 5:
+                searchDistance = 200000;
                 break;
         }
     }

@@ -47,7 +47,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     private GoogleMap mMap;
     Location CurrentLocation;
     FusedLocationProviderClient fusedLocationProviderClient;
-    private static final int REQEST_CODE =101;
+    private static final int REQEST_CODE = 101;
     double UserLatitude;
     double UserLongitude;
     LatLng position;
@@ -63,19 +63,18 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
         User user = new User();
 
-        MapFragment mapFragment = (MapFragment)getFragmentManager()
+        MapFragment mapFragment = (MapFragment) getFragmentManager()
                 .findFragmentById(R.id.map);
         mapFragment.getMapAsync(MapsActivity.this);
 
 
         done = findViewById(R.id.donebtn);
         done.setOnClickListener(v -> {
-          //  Toast.makeText(getApplicationContext(),UserLatitude+" " +UserLongitude,Toast.LENGTH_LONG).show();
+            //  Toast.makeText(getApplicationContext(),UserLatitude+" " +UserLongitude,Toast.LENGTH_LONG).show();
             setResult(Constants.REQUEST_GET_MAP_LOCATION, new Intent().putExtra(Constants.LATITUDE, UserLatitude).putExtra(Constants.LONGITUDE, UserLongitude));
             finish();
         });
     }
-
 
 
     @Override
@@ -87,14 +86,22 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(latLng, 14f));
 
         //add marker
-        googleMap.setOnMapClickListener((GoogleMap.OnMapClickListener) nlatLng -> {
-            MarkerOptions markerOptions = new MarkerOptions();
-            markerOptions.position(nlatLng);
-            markerOptions.title("My Click");
-            googleMap.clear();
-            markerOptions.draggable(true);
-            googleMap.addMarker(markerOptions);
-          //  Toast.makeText(getApplicationContext(),"Location "+nlatLng,Toast.LENGTH_LONG).show();
+        googleMap.setOnMapClickListener(new GoogleMap.OnMapClickListener() {
+            @Override
+            public void onMapClick(LatLng latLng) {
+
+                    UserLatitude = latLng.latitude;
+                    UserLongitude = latLng.longitude;
+
+                MarkerOptions markerOptions = new MarkerOptions();
+                markerOptions.position(latLng);
+                markerOptions.title("My Click");
+                googleMap.clear();
+                markerOptions.draggable(true);
+                googleMap.addMarker(markerOptions);
+
+                //  Toast.makeText(getApplicationContext(),"Location "+nlatLng,Toast.LENGTH_LONG).show();
+            }
         });
 
 
@@ -118,7 +125,6 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         });
 
     }
-
 
 
     // Link Menu
@@ -153,10 +159,10 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
     //Zoom Buttons
     public void onZoom(View view) {
-        if (view.getId() == R.id.zoomInbtn){
+        if (view.getId() == R.id.zoomInbtn) {
             mMap.animateCamera(CameraUpdateFactory.zoomIn());
         }
-        if (view.getId() == R.id.zoomOutbtn){
+        if (view.getId() == R.id.zoomOutbtn) {
             mMap.animateCamera(CameraUpdateFactory.zoomOut());
         }
 
@@ -165,10 +171,10 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
     //Check Permission
     private void fetchLastLocation() {
-        if ( ContextCompat.checkSelfPermission( this, android.Manifest.permission.ACCESS_COARSE_LOCATION )
-                != PackageManager.PERMISSION_GRANTED ) {
+        if (ContextCompat.checkSelfPermission(this, android.Manifest.permission.ACCESS_COARSE_LOCATION)
+                != PackageManager.PERMISSION_GRANTED) {
 
-            ActivityCompat.requestPermissions( this, new String[]
+            ActivityCompat.requestPermissions(this, new String[]
                     {android.Manifest.permission.ACCESS_COARSE_LOCATION}, REQEST_CODE);
         }
 
@@ -177,14 +183,14 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         task.addOnSuccessListener(new OnSuccessListener<Location>() {
             @Override
             public void onSuccess(Location location) {
-                if(location != null) {
+                if (location != null) {
                     CurrentLocation = location;
                     UserLatitude = CurrentLocation.getLatitude();
                     UserLongitude = CurrentLocation.getLongitude();
-                //    Toast.makeText(getApplicationContext(),UserLatitude+" " +UserLongitude,Toast.LENGTH_LONG).show();
+                    //    Toast.makeText(getApplicationContext(),UserLatitude+" " +UserLongitude,Toast.LENGTH_LONG).show();
 
                     // Obtain the SupportMapFragment and get notified when the map is ready to be used.
-                    MapFragment mapFragment = (MapFragment)getFragmentManager()
+                    MapFragment mapFragment = (MapFragment) getFragmentManager()
                             .findFragmentById(R.id.map);
                     mapFragment.getMapAsync(MapsActivity.this);
                 }
@@ -213,7 +219,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(latLng, 18f));
         mMap.clear();
         mMap.addMarker(markerOptions);
-     //   Toast.makeText(getApplicationContext(),"Location "+latLng,Toast.LENGTH_LONG).show();
+        //   Toast.makeText(getApplicationContext(),"Location "+latLng,Toast.LENGTH_LONG).show();
     }
 }
 

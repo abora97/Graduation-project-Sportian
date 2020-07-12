@@ -3,7 +3,9 @@ package com.example.graduationprojectsportian.ui.activity;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.location.Location;
 import android.os.Bundle;
+import android.util.Log;
 import android.widget.Toast;
 
 import com.example.graduationprojectsportian.R;
@@ -16,13 +18,13 @@ import java.util.ArrayList;
 import java.util.List;
 
 
-
 public class ClubsActivity extends AppCompatActivity {
 
     private RecyclerView recyclerView;
     int searchDistance = 3, arrSize;
     List<Sport> sportList;
     double userLatitude, userLongitude;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -66,18 +68,47 @@ public class ClubsActivity extends AppCompatActivity {
         });
     }
 
-    private void initRec(List<Sport> sports, List<String> keys) {
-        if (searchDistance > sports.size()) {
-            arrSize = sports.size();
-        } else {
-            arrSize = searchDistance;
-        }
+//    private void initRec(List<Sport> sports, List<String> keys) {
+//        if (searchDistance > sports.size()) {
+//            arrSize = sports.size();
+//        } else {
+//            arrSize = searchDistance;
+//        }
+//
+//        for (int i = 0; i < arrSize; i++) {
+//            sportList.add(sports.get(i));
+//        }
+//
+//        new RecyclerView_Config().setConfig(recyclerView, ClubsActivity.this, sportList, keys);
+//    }
 
-        for (int i = 0; i < arrSize; i++) {
-            sportList.add(sports.get(i));
+    private void initRec(List<Sport> sports, List<String> keys) {
+
+
+        Location startPoint = new Location("locationA");
+
+
+        Location endPoint = new Location("locationA");
+
+        for (int i = 0; i < sports.size(); i++) {
+
+            startPoint.setLatitude(userLatitude);
+            startPoint.setLongitude(userLongitude);
+
+            endPoint.setLatitude(sports.get(i).latitude);
+            endPoint.setLongitude(sports.get(i).longitude);
+
+            int distance = (int) startPoint.distanceTo(endPoint);
+
+            if (distance <= searchDistance) {
+                sportList.add(sports.get(i));
+                Log.d("Fucking distance", distance + "  >>>>>  " + searchDistance);
+            } else {
+                Log.d("Fucking distance out", distance + "  >>>>>  " + searchDistance);
+            }
+
         }
 
         new RecyclerView_Config().setConfig(recyclerView, ClubsActivity.this, sportList, keys);
     }
-
 }
