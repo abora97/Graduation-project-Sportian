@@ -16,12 +16,13 @@ import java.util.ArrayList;
 import java.util.List;
 
 
+
 public class ClubsActivity extends AppCompatActivity {
 
     private RecyclerView recyclerView;
     int searchDistance = 3, arrSize;
     List<Sport> sportList;
-
+    double userLatitude, userLongitude;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -31,7 +32,9 @@ public class ClubsActivity extends AppCompatActivity {
         sportList = new ArrayList<Sport>();
         Bundle bundle = getIntent().getExtras();
         if (bundle != null) {
-            searchDistance = bundle.getInt("distance");
+            searchDistance = bundle.getInt(Constants.DISTANCE);
+            userLatitude = bundle.getDouble(Constants.LATITUDE);
+            userLongitude = bundle.getDouble(Constants.LONGITUDE);
             initFireBase();
         }
     }

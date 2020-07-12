@@ -14,4 +14,10 @@ public interface Constants {
 
     String MyPREFERENCES = "MyPrefs" ;
     String INTROSTATUS = "MyPrefs" ;
+     int REQUEST_GET_MAP_LOCATION = 1238;
+
+     String LATITUDE="latitude";
+     String LONGITUDE="longitude";
+     String DISTANCE="distance";
+
 }

@@ -12,14 +12,18 @@ import android.widget.LinearLayout;
 import android.widget.Spinner;
 import android.widget.Toast;
 
+import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
 import com.example.graduationprojectsportian.R;
 import com.example.graduationprojectsportian.model.User;
 import com.example.graduationprojectsportian.ui.activity.ClubsActivity;
 import com.example.graduationprojectsportian.ui.activity.MapsActivity;
+import com.example.graduationprojectsportian.util.Constants;
 
 import butterknife.BindView;
+
+import static com.example.graduationprojectsportian.util.Constants.REQUEST_GET_MAP_LOCATION;
 
 public class SportFragment extends Fragment implements View.OnClickListener, AdapterView.OnItemSelectedListener {
 
@@ -29,13 +33,12 @@ public class SportFragment extends Fragment implements View.OnClickListener, Ada
     String[] sports;
     String[] distance;
     int searchDistance = 5;
-    String sportItem,distanceItem;
+    String sportItem, distanceItem;
+    double userLatitude = 0, userLongitude = 0;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View RootView = inflater.inflate(R.layout.fragment_sport, container, false);
-
-
 
         spinnerSport = RootView.findViewById(R.id.spinnerSport);
         spinnerDistance = RootView.findViewById(R.id.spinnerDistance);
@@ -46,8 +49,8 @@ public class SportFragment extends Fragment implements View.OnClickListener, Ada
         layLocation.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(getActivity(), MapsActivity.class));
-                ;
+                getActivity().startActivityForResult(new Intent(getActivity(), MapsActivity.class), REQUEST_GET_MAP_LOCATION);
+                // startActivity(new Intent(getActivity(), MapsActivity.class));
             }
         });
 
@@ -56,8 +59,6 @@ public class SportFragment extends Fragment implements View.OnClickListener, Ada
         // Inflate the layout for this fragment
         return RootView;
     }
-
-    User user = new User();
 
 
     private void init() {
@@ -94,11 +95,17 @@ public class SportFragment extends Fragment implements View.OnClickListener, Ada
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.laySearch:
-                Intent intent = new Intent(getActivity(), ClubsActivity.class);
-                Bundle bundle = new Bundle();
-                bundle.putInt("distance", searchDistance);
-                intent.putExtras(bundle);
-                startActivity(intent);
+                if (userLatitude == 0 && userLongitude == 0) {
+                    Toast.makeText(getContext(), "Please add your location", Toast.LENGTH_SHORT).show();
+                } else {
+                    Intent intent = new Intent(getActivity(), ClubsActivity.class);
+                    Bundle bundle = new Bundle();
+                    bundle.putInt(Constants.DISTANCE, searchDistance);
+                    bundle.putDouble(Constants.LATITUDE, userLatitude);
+                    bundle.putDouble(Constants.LONGITUDE, userLongitude);
+                    intent.putExtras(bundle);
+                    startActivity(intent);
+                }
                 break;
             case R.id.laySport:
                 break;
@@ -107,34 +114,50 @@ public class SportFragment extends Fragment implements View.OnClickListener, Ada
 
     @Override
     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-        if (parent.getId() == R.id.spinnerSport){
-             sportItem = spinnerSport.getItemAtPosition(position).toString();
-           // Toast.makeText(spinnerDistance.getContext(), "Selected  : " + sports, Toast.LENGTH_LONG).show();
-        }
-        else if (parent.getId() == R.id.spinnerDistance) {
-             distanceItem = spinnerDistance.getItemAtPosition(position).toString();
+        if (parent.getId() == R.id.spinnerSport) {
+            sportItem = spinnerSport.getItemAtPosition(position).toString();
+            // Toast.makeText(spinnerDistance.getContext(), "Selected  : " + sports, Toast.LENGTH_LONG).show();
+        } else if (parent.getId() == R.id.spinnerDistance) {
+            distanceItem = spinnerDistance.getItemAtPosition(position).toString();
             //Toast.makeText(spinnerDistance.getContext(), "Selected distance : " + distance + " Km", Toast.LENGTH_LONG).show();
         }
         //user.setSport(String.valueOf(sports.getSelectedItem()));
 
-//        switch (position) {
-//            case 0:
-//                searchDistance =3;
-//                break;
-//            case 1:
-//                searchDistance = 5;
-//                break;
-//            case 2:
-//                searchDistance = 7;
-//                break;
-//            case 3:
-//                searchDistance = 15;
-//                break;
-//        }
+        switch (position) {
+            case 0:
+                searchDistance = 5;
+                break;
+            case 1:
+                searchDistance = 10;
+                break;
+            case 2:
+                searchDistance = 25;
+                break;
+            case 3:
+                searchDistance = 50;
+                break;
+            case 4:
+                searchDistance = 100;
+                break;
+        }
     }
 
     @Override
     public void onNothingSelected(AdapterView<?> parent) {
 
     }
+
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        //    Toast.makeText(getContext(), resultCode + ">>>>>>>>" + requestCode, Toast.LENGTH_SHORT).show();
+        if (requestCode == REQUEST_GET_MAP_LOCATION && resultCode == REQUEST_GET_MAP_LOCATION) {
+
+            userLatitude = data.getDoubleExtra(Constants.LATITUDE, 0);
+            userLongitude = data.getDoubleExtra(Constants.LONGITUDE, 0);
+        }
+
+    }
+
+
 }

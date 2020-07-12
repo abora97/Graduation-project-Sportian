@@ -117,9 +117,11 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
-        Fragment fragment = getSupportFragmentManager().findFragmentById(R.id.laySport);
         super.onActivityResult(requestCode, resultCode, data);
-        finish();
+        Fragment fragment = getSupportFragmentManager().findFragmentByTag("sport");
+        if (fragment != null) {
+            fragment.onActivityResult(requestCode, resultCode, data);
+        }
     }
 
 

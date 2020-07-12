@@ -8,6 +8,7 @@ import androidx.core.content.ContextCompat;
 import androidx.fragment.app.FragmentActivity;
 import androidx.fragment.app.FragmentManager;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.location.Address;
@@ -25,6 +26,7 @@ import com.example.graduationprojectsportian.R;
 import com.example.graduationprojectsportian.model.Sport;
 import com.example.graduationprojectsportian.model.User;
 import com.example.graduationprojectsportian.ui.fragment.SportFragment;
+import com.example.graduationprojectsportian.util.Constants;
 import com.google.android.gms.location.FusedLocationProviderClient;
 import com.google.android.gms.location.LocationServices;
 import com.google.android.gms.maps.CameraUpdateFactory;
@@ -67,14 +69,10 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
 
         done = findViewById(R.id.donebtn);
-        done.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(MapsActivity.this, HomeActivity.class);
-                user.setUserlatitude(UserLatitude);
-                user.setUserlongitude(UserLongitude);
-                finish();
-            }
+        done.setOnClickListener(v -> {
+          //  Toast.makeText(getApplicationContext(),UserLatitude+" " +UserLongitude,Toast.LENGTH_LONG).show();
+            setResult(Constants.REQUEST_GET_MAP_LOCATION, new Intent().putExtra(Constants.LATITUDE, UserLatitude).putExtra(Constants.LONGITUDE, UserLongitude));
+            finish();
         });
     }
 
@@ -89,17 +87,14 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(latLng, 14f));
 
         //add marker
-        googleMap.setOnMapLongClickListener(new GoogleMap.OnMapLongClickListener() {
-            @Override
-            public void onMapLongClick(LatLng nlatLng) {
-                MarkerOptions markerOptions = new MarkerOptions();
-                markerOptions.position(nlatLng);
-                markerOptions.title("My Click");
-                googleMap.clear();
-                markerOptions.draggable(true);
-                googleMap.addMarker(markerOptions);
-                Toast.makeText(getApplicationContext(),"Location "+nlatLng,Toast.LENGTH_LONG).show();
-            }
+        googleMap.setOnMapClickListener((GoogleMap.OnMapClickListener) nlatLng -> {
+            MarkerOptions markerOptions = new MarkerOptions();
+            markerOptions.position(nlatLng);
+            markerOptions.title("My Click");
+            googleMap.clear();
+            markerOptions.draggable(true);
+            googleMap.addMarker(markerOptions);
+          //  Toast.makeText(getApplicationContext(),"Location "+nlatLng,Toast.LENGTH_LONG).show();
         });
 
 
@@ -186,7 +181,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                     CurrentLocation = location;
                     UserLatitude = CurrentLocation.getLatitude();
                     UserLongitude = CurrentLocation.getLongitude();
-                    Toast.makeText(getApplicationContext(),UserLatitude+" " +UserLongitude,Toast.LENGTH_LONG).show();
+                //    Toast.makeText(getApplicationContext(),UserLatitude+" " +UserLongitude,Toast.LENGTH_LONG).show();
 
                     // Obtain the SupportMapFragment and get notified when the map is ready to be used.
                     MapFragment mapFragment = (MapFragment)getFragmentManager()
@@ -218,7 +213,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(latLng, 18f));
         mMap.clear();
         mMap.addMarker(markerOptions);
-        Toast.makeText(getApplicationContext(),"Location "+latLng,Toast.LENGTH_LONG).show();
+     //   Toast.makeText(getApplicationContext(),"Location "+latLng,Toast.LENGTH_LONG).show();
     }
 }
 
