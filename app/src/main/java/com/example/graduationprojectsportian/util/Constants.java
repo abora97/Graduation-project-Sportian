@@ -19,5 +19,6 @@ public interface Constants {
      String LATITUDE="latitude";
      String LONGITUDE="longitude";
      String DISTANCE="distance";
+     String SPORT="sport";
 
 }

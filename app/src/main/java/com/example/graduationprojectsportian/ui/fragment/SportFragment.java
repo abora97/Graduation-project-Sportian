@@ -101,6 +101,7 @@ public class SportFragment extends Fragment implements View.OnClickListener, Ada
                     Intent intent = new Intent(getActivity(), ClubsActivity.class);
                     Bundle bundle = new Bundle();
                     bundle.putInt(Constants.DISTANCE, searchDistance);
+                    bundle.putString(Constants.SPORT, sportItem);
                     bundle.putDouble(Constants.LATITUDE, userLatitude);
                     bundle.putDouble(Constants.LONGITUDE, userLongitude);
                     intent.putExtras(bundle);
@@ -116,32 +117,29 @@ public class SportFragment extends Fragment implements View.OnClickListener, Ada
     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
         if (parent.getId() == R.id.spinnerSport) {
             sportItem = spinnerSport.getItemAtPosition(position).toString();
-            // Toast.makeText(spinnerDistance.getContext(), "Selected  : " + sports, Toast.LENGTH_LONG).show();
+
         } else if (parent.getId() == R.id.spinnerDistance) {
             distanceItem = spinnerDistance.getItemAtPosition(position).toString();
-            //Toast.makeText(spinnerDistance.getContext(), "Selected distance : " + distance + " Km", Toast.LENGTH_LONG).show();
-        }
-        //user.setSport(String.valueOf(sports.getSelectedItem()));
-
-        switch (position) {
-            case 0:
-                searchDistance = 5000;
-                break;
-            case 1:
-                searchDistance = 10000;
-                break;
-            case 2:
-                searchDistance = 25000;
-                break;
-            case 3:
-                searchDistance = 50000;
-                break;
-            case 4:
-                searchDistance = 100000;
-                break;
-            case 5:
-                searchDistance = 200000;
-                break;
+            switch (position) {
+                case 0:
+                    searchDistance = 5000;
+                    break;
+                case 1:
+                    searchDistance = 10000;
+                    break;
+                case 2:
+                    searchDistance = 25000;
+                    break;
+                case 3:
+                    searchDistance = 50000;
+                    break;
+                case 4:
+                    searchDistance = 100000;
+                    break;
+                case 5:
+                    searchDistance = 200000;
+                    break;
+            }
         }
     }
 

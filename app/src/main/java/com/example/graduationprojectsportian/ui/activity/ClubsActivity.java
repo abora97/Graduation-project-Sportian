@@ -24,6 +24,7 @@ public class ClubsActivity extends AppCompatActivity {
     int searchDistance = 3, arrSize;
     List<Sport> sportList;
     double userLatitude, userLongitude;
+    String sportSearch;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,6 +36,7 @@ public class ClubsActivity extends AppCompatActivity {
         Bundle bundle = getIntent().getExtras();
         if (bundle != null) {
             searchDistance = bundle.getInt(Constants.DISTANCE);
+            sportSearch = bundle.getString(Constants.SPORT);
             userLatitude = bundle.getDouble(Constants.LATITUDE);
             userLongitude = bundle.getDouble(Constants.LONGITUDE);
             initFireBase();
@@ -100,7 +102,7 @@ public class ClubsActivity extends AppCompatActivity {
 
             int distance = (int) startPoint.distanceTo(endPoint);
 
-            if (distance <= searchDistance) {
+            if (distance <= searchDistance && sportSearch.equals(sports.get(i).sport)) {
                 sportList.add(sports.get(i));
                 Log.d("Fucking distance", distance + "  >>>>>  " + searchDistance);
             } else {
