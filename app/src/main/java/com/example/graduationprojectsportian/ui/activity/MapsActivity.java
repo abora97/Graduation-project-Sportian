@@ -90,8 +90,8 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
             @Override
             public void onMapClick(LatLng latLng) {
 
-                    UserLatitude = latLng.latitude;
-                    UserLongitude = latLng.longitude;
+                UserLatitude = latLng.latitude;
+                UserLongitude = latLng.longitude;
 
                 MarkerOptions markerOptions = new MarkerOptions();
                 markerOptions.position(latLng);
@@ -222,6 +222,3 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         //   Toast.makeText(getApplicationContext(),"Location "+latLng,Toast.LENGTH_LONG).show();
     }
 }
-
-
-

@@ -7,7 +7,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
-import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.Spinner;
 import android.widget.Toast;
@@ -16,12 +15,9 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
 import com.example.graduationprojectsportian.R;
-import com.example.graduationprojectsportian.model.User;
 import com.example.graduationprojectsportian.ui.activity.ClubsActivity;
 import com.example.graduationprojectsportian.ui.activity.MapsActivity;
 import com.example.graduationprojectsportian.util.Constants;
-
-import butterknife.BindView;
 
 import static com.example.graduationprojectsportian.util.Constants.REQUEST_GET_MAP_LOCATION;
 
@@ -49,7 +45,7 @@ public class SportFragment extends Fragment implements View.OnClickListener, Ada
         layLocation.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                getActivity().startActivityForResult(new Intent(getActivity(), MapsActivity.class), REQUEST_GET_MAP_LOCATION);
+                getActivity().startActivityForResult(new Intent(getActivity(), MapsActivity .class), REQUEST_GET_MAP_LOCATION);
                 // startActivity(new Intent(getActivity(), MapsActivity.class));
             }
         });
